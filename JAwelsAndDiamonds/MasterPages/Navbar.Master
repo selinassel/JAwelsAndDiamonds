@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Navbar.master.cs" Inherits="JAwelsAndDiamonds.MasterPages.Navbar" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>JAwels & Diamonds</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: right;
+        }
+        li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <ul>
+                <li><a href="Home.aspx">Home</a></li>
+
+                <% if (Session["Role"] == null) { %>
+                    <li><a href="Login.aspx">Login</a></li>
+                    <li><a href="Register.aspx">Register</a></li>
+
+                <% } else if (Session["Role"].ToString() == "Customer") { %>
+                    <li><a href="Cart.aspx">Cart</a></li>
+                    <li><a href="MyOrders.aspx">My Orders</a></li>
+                    <li><a href="Profile.aspx">Profile</a></li>
+                    <li><a href="Logout.aspx">Logout</a></li>
+
+                <% } else if(Session["Role"].ToString() == "Admin") { %>
+                    <li><a href="AddJewel.aspx">Add Jewel</a></li>
+                    <li><a href="Reports.aspx">Reports</a></li>
+                    <li><a href="HandleOrders.aspx">Handle Orders</a></li>
+                    <li><a href="Profile.aspx">Profile</a></li>
+                    <li><a href="Logout.aspx">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
