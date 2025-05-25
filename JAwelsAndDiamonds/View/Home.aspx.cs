@@ -11,7 +11,10 @@ namespace JAwelsAndDiamonds.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["user"] == null && Request.Cookies["user_cookie"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }

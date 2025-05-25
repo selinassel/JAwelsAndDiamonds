@@ -26,7 +26,7 @@
             background: white;
             box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
         }
-        input {
+        input:not([type="radio"]):not([type="checkbox"])  {
             padding: 8px;
             width: 250px;
             border: 1px solid #ccc;
@@ -55,16 +55,24 @@
         <h2>Login</h2>
         <div>
             <asp:Label Text="Email: " runat="server" />
-            <input id="emailBox" type="email" placeholder="Enter your email"/>
+            <input id="emailBox" type="email" runat="server" placeholder="Enter your email"/>
         </div>
         <p></p>
         <div>
             <asp:Label Text="Password: " runat="server" />
-            <input id="passwordBox" type="password" placeholder="Enter your password"/>
+            <input id="passwordBox" type="password" runat="server" placeholder="Enter your password"/>
+        </div>
+        <p></p>
+        <div">
+            <asp:CheckBox ID="rememberMe" runat="server" Text="Remember Me"/>
+        </div>
+        <p></p>
+        <div style="color: red">
+            <asp:Label ID="error" runat="server" Text="" />
         </div>
         <p></p>
         <div>
-            <asp:Button ID="loginButton" runat="server" Text="Login"/>
+            <asp:Button ID="loginButton" runat="server" Text="Login" OnClick="loginButton_Click"/>
         </div>
     </form>
 </body>

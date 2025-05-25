@@ -26,7 +26,7 @@
             background: white;
             box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
         }
-        input {
+        input:not([type="radio"]):not([type="checkbox"])  {
             padding: 8px;
             width: 250px;
             border: 1px solid #ccc;
@@ -35,7 +35,7 @@
         label {
             margin-right: 10px;
         }
-        #loginButton {
+        #registButton {
             background-color: lightskyblue;
             color: white;
             border: none;
@@ -45,7 +45,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        #loginButton:hover {
+        #registButton:hover {
             background-color: dodgerblue;
         }
     </style>
@@ -73,7 +73,7 @@
             <input id="confirmPwBox" type="password" placeholder="Confirm your password"/>
         </div>
         <p></p>
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
             <asp:Label Text="Gender: " runat="server"/>
             <asp:RadioButton ID="genderMale" runat="server" GroupName="Gender" Text="Male"/>
             <asp:RadioButton ID="genderFemale" runat="server" GroupName="Gender" Text="Female"/>
