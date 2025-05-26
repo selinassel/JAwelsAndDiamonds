@@ -65,12 +65,12 @@
         <p></p>
         <div>
             <asp:Label Text="Password: " runat="server" />
-             <asp:TextBox ID="passwordBox" runat="server" TextMode="Password" placeholder="Enter password"/>
+            <asp:TextBox ID="passwordBox" runat="server" TextMode="Password" placeholder="Enter password"/>
         </div>
         <p></p>
         <div>
             <asp:Label Text="Confirm Password: " runat="server" />
-             <asp:TextBox ID="confirmPwBox" runat="server" TextMode="Password" placeholder="Confirm your password"/>
+            <asp:TextBox ID="confirmPwBox" runat="server" TextMode="Password" placeholder="Confirm your password"/>
         </div>
         <p></p>
         <div style="display: flex; align-items: center; gap: 10px;">

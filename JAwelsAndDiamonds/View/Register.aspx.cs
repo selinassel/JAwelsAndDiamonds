@@ -19,10 +19,10 @@ namespace JAwelsAndDiamonds.View
 
         protected void registButton_Click(object sender, EventArgs e)
         {
-            string email = Request.Form["emailBox"];
-            string username = Request.Form["usernameBox"];
-            string password = Request.Form["passwordBox"];
-            string confirmPw = Request.Form["confirmPwBox"];
+            string email = emailBox.Text;
+            string username = usernameBox.Text;
+            string password = passwordBox.Text;
+            string confirmPw = confirmPwBox.Text;
             string gender = genderMale.Checked ? "Male" : genderFemale.Checked ? "Female" : "";
             DateTime dob;
 
@@ -42,6 +42,7 @@ namespace JAwelsAndDiamonds.View
                 errorMsg.Text = "Username harus 3-25 karakter";
                 return;
             }
+            if(username.)
 
         }
     }
