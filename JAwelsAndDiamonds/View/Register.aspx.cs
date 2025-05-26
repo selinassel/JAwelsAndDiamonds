@@ -42,7 +42,6 @@ namespace JAwelsAndDiamonds.View
                 errorMsg.Text = "Username harus 3-25 karakter";
                 return;
             }
-            if(username.)
 
         }
     }

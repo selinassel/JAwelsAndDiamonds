@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\JAwelsAndDiamonds\JAwelsAndDiamonds\JAwelsAndDiamonds\Model\JAwelsModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Kuliah\Sems4\LabPSD\JAwelsAndDiamonds\JAwelsAndDiamonds\Model\JAwelsModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
