@@ -68,7 +68,7 @@
         </div>
         <p></p>
         <div style="color: red">
-            <asp:Label ID="error" runat="server" Text="" />
+            <asp:Label ID="errorLabel" runat="server" Text="" />
         </div>
         <p></p>
         <div>

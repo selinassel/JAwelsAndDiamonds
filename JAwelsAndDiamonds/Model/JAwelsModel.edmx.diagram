@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae95437a786944b288c333317adc655c" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="ae95437a786944b288c333317adc655c" Name="Diagram1" ZoomLevel="101">
         <EntityTypeShape EntityType="Database1Model.MsBrand" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.MsCategory" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.MsJewel" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.MsUser" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.TransactionHeader" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.Cart" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.TransactionDetail" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.TransactionDetail" Width="1.5" PointX="7.125" PointY="6" IsExpanded="true" />
         <AssociationConnector Association="Database1Model.FK_MsJewel_MsBrand" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_MsJewel_MsCategory" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_Cart_MsJewel" ManuallyRouted="false" />

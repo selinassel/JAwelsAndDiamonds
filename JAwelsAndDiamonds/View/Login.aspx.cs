@@ -29,6 +29,7 @@ namespace JAwelsAndDiamonds.View
             if (user != null)
             {
                 Session["user"] = user;
+                Session["Role"] = user.UserRole;
 
                 if (remember)
                 {
@@ -39,6 +40,10 @@ namespace JAwelsAndDiamonds.View
                 }
 
                 Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                errorLabel.Text = "Email atau password salah.";
             }
         }
     }

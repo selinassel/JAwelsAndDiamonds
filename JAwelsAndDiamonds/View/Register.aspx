@@ -55,22 +55,22 @@
         <h2>Register</h2>
         <div>
             <asp:Label Text="Email: " runat="server" />
-            <input id="emailBox" type="email" placeholder="Enter your email"/>
+            <asp:TextBox ID="emailBox" runat="server" TextMode="Email" placeholder="Enter email" />
         </div>
         <p></p>
         <div>
             <asp:Label Text="Username: " runat="server" />
-            <input id="usernameBox" type="text" placeholder="Enter your username"/>
+            <asp:TextBox ID="usernameBox" runat="server" placeholder="Enter username"/>
         </div>
         <p></p>
         <div>
             <asp:Label Text="Password: " runat="server" />
-            <input id="passwordBox" type="password" placeholder="Enter your password"/>
+             <asp:TextBox ID="passwordBox" runat="server" TextMode="Password" placeholder="Enter password"/>
         </div>
         <p></p>
         <div>
             <asp:Label Text="Confirm Password: " runat="server" />
-            <input id="confirmPwBox" type="password" placeholder="Confirm your password"/>
+             <asp:TextBox ID="confirmPwBox" runat="server" TextMode="Password" placeholder="Confirm your password"/>
         </div>
         <p></p>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -85,7 +85,11 @@
         </div>
         <p></p>
         <div>
-            <asp:Button ID="registButton" runat="server" Text="Register"/>
+            <asp:Label ID="errorMsg" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+        </div>
+        <p></p>
+        <div>
+            <asp:Button ID="registButton" runat="server" Text="Register" OnClick="registButton_Click"/>
         </div>
     </form>
 </body>
