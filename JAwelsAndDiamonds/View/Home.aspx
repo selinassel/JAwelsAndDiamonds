@@ -7,4 +7,7 @@
         <h1>Welcome to JAwels And Diamonds</h1>
         <p>Enjoy your shopping experience here!</p>
     </div>
+    <div>
+        <h1>Jewels List</h1>
+    </div>
 </asp:Content>
