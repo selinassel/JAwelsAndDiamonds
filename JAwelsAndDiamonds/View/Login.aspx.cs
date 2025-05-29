@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using JAwelsAndDiamonds.Model;
+using JAwelsAndDiamonds.Repo;
 
 namespace JAwelsAndDiamonds.View
 {
@@ -24,7 +25,7 @@ namespace JAwelsAndDiamonds.View
             string password = passwordBox.Value;
             bool remember = rememberMe.Checked;
 
-            var user = (from x in db.MsUsers where x.UserEmail.Equals(email) && x.UserPassword.Equals(password) select x).FirstOrDefault();
+            MsUser user = UserRepo.GetUserByEmailAndPassword(email, password);
 
             if (user != null)
             {

@@ -4,58 +4,60 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'D:\JAWELSANDDIAMONDS_NEW\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="UserID" />
+            
+            
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="JewelID" Type="int" />
-          <Property Name="Quantity" Type="int" />
+          <Property Name="JewelID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MsBrand">
           <Key>
             <PropertyRef Name="BrandID" />
           </Key>
           <Property Name="BrandID" Type="int" Nullable="false" />
-          <Property Name="BrandName" Type="varchar" MaxLength="50" />
-          <Property Name="BrandCountry" Type="varchar" MaxLength="50" />
-          <Property Name="BrandClass" Type="varchar" MaxLength="20" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandCountry" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandClass" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="MsCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="15" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="MsJewel">
           <Key>
             <PropertyRef Name="JewelID" />
           </Key>
-          <Property Name="JewelID" Type="int" Nullable="false" />
-          <Property Name="BrandID" Type="int" />
-          <Property Name="CategoryID" Type="int" />
-          <Property Name="JewelName" Type="varchar" MaxLength="100" />
-          <Property Name="JewelPrice" Type="int" />
-          <Property Name="JewelReleaseYear" Type="int" />
+          <Property Name="JewelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="JewelName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="JewelPrice" Type="int" Nullable="false" />
+          <Property Name="JewelReleaseYear" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MsUser">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="100" />
-          <Property Name="UserPassword" Type="varchar" MaxLength="20" />
-          <Property Name="UserEmail" Type="varchar" MaxLength="100" />
-          <Property Name="UserDOB" Type="date" />
-          <Property Name="UserGender" Type="varchar" MaxLength="10" />
-          <Property Name="UserRole" Type="varchar" MaxLength="10" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserDOB" Type="date" Nullable="false" />
+          <Property Name="UserGender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.TransactionDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'D:\JAWELSANDDIAMONDS_NEW\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.TransactionDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TransactionDetail">
           <Key>
             <PropertyRef Name="TransactionID" />
@@ -75,7 +77,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
           <Property Name="TransactionStatus" Type="varchar" MaxLength="30" />
         </EntityType>
         <Association Name="FK_Cart_MsJewel">
-          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="0..1" />
+          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MsJewel">
@@ -88,7 +90,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
         </Association>
         <Association Name="FK_Cart_MsUser">
           <End Role="MsUser" Type="Self.MsUser" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MsUser">
               <PropertyRef Name="UserID" />
@@ -99,7 +101,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MsJewel_MsBrand">
-          <End Role="MsBrand" Type="Self.MsBrand" Multiplicity="0..1" />
+          <End Role="MsBrand" Type="Self.MsBrand" Multiplicity="1" />
           <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MsBrand">
@@ -111,7 +113,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MsJewel_MsCategory">
-          <End Role="MsCategory" Type="Self.MsCategory" Multiplicity="0..1" />
+          <End Role="MsCategory" Type="Self.MsCategory" Multiplicity="1" />
           <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MsCategory">
@@ -207,8 +209,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <End Role="TransactionHeader" EntitySet="TransactionHeader" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -217,9 +218,9 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <PropertyRef Name="BrandID" />
           </Key>
           <Property Name="BrandID" Type="Int32" Nullable="false" />
-          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandClass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandClass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MsJewels" Relationship="Self.FK_MsJewel_MsBrand" FromRole="MsBrand" ToRole="MsJewel" />
         </EntityType>
         <EntityType Name="MsCategory">
@@ -227,7 +228,7 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MsJewels" Relationship="Self.FK_MsJewel_MsCategory" FromRole="MsCategory" ToRole="MsJewel" />
         </EntityType>
         <EntityType Name="MsJewel">
@@ -235,11 +236,11 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <PropertyRef Name="JewelID" />
           </Key>
           <Property Name="JewelID" Type="Int32" Nullable="false" />
-          <Property Name="BrandID" Type="Int32" />
-          <Property Name="CategoryID" Type="Int32" />
-          <Property Name="JewelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="JewelPrice" Type="Int32" />
-          <Property Name="JewelReleaseYear" Type="Int32" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="JewelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JewelPrice" Type="Int32" Nullable="false" />
+          <Property Name="JewelReleaseYear" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MsBrand" Relationship="Self.FK_MsJewel_MsBrand" FromRole="MsJewel" ToRole="MsBrand" />
           <NavigationProperty Name="MsCategory" Relationship="Self.FK_MsJewel_MsCategory" FromRole="MsJewel" ToRole="MsCategory" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_MsJewel" FromRole="MsJewel" ToRole="Cart" />
@@ -250,12 +251,12 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UserDOB" Type="DateTime" Precision="0" />
-          <Property Name="UserGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserDOB" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="UserGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_MsUser" FromRole="MsUser" ToRole="Cart" />
           <NavigationProperty Name="TransactionHeaders" Relationship="Self.FK_TransactionHeader_MsUser" FromRole="MsUser" ToRole="TransactionHeader" />
         </EntityType>
@@ -276,8 +277,8 @@ warning 6002: The table/view 'D:\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\JAWELSANDDI
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="JewelID" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
+          <Property Name="JewelID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MsJewel" Relationship="Self.FK_Cart_MsJewel" FromRole="Cart" ToRole="MsJewel" />
           <NavigationProperty Name="MsUser" Relationship="Self.FK_Cart_MsUser" FromRole="Cart" ToRole="MsUser" />
         </EntityType>

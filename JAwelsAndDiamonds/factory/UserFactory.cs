@@ -8,15 +8,15 @@ namespace JAwelsAndDiamonds.Factory
 {
     public class UserFactory
     {
-        public MsUser CreateNewUser(string username, string password, string email, DateTime DOB, string gender, string role)
+        public MsUser CreateNewUser(string username, string password, string email, DateTime dob, string gender)
         {
             MsUser user = new MsUser();
             user.UserName = username;
             user.UserPassword = password;
             user.UserEmail = email;
-            user.UserDOB = DOB;
+            user.UserDOB = dob;
             user.UserGender = gender;
-            user.UserRole = role;
+            user.UserRole = "Customer";
             return user;
 
         }

@@ -38,7 +38,7 @@
                 <% } else if(Session["Role"].ToString() == "Admin") { %>
                     <li><a href="AddJewel.aspx">Add Jewel</a></li>
                     <li><a href="Reports.aspx">Reports</a></li>
-                    <li><a href="HandleOrders.aspx">Handle Orders</a></li>
+                    <li><a href="HandleOrder.aspx">Handle Orders</a></li>
                     <li><a href="Profile.aspx">Profile</a></li>
                     <li><a href="Logout.aspx">Logout</a></li>
                 <% } %>

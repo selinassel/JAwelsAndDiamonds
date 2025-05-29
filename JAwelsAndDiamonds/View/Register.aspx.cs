@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using JAwelsAndDiamonds.Handler;
 using JAwelsAndDiamonds.Model;
 
 namespace JAwelsAndDiamonds.View
@@ -39,10 +40,41 @@ namespace JAwelsAndDiamonds.View
 
             if(username.Length < 3 || username.Length > 25)
             {
-                errorMsg.Text = "Username harus 3-25 karakter";
+                errorMsg.Text = "Username length must be 3-25 characters";
                 return;
             }
 
+            if(password.Length < 8 || password.Length > 20 || !password.All(char.IsLetterOrDigit))
+            {
+                errorMsg.Text = "Password length must be 8-20 characters";
+                return;
+            }
+
+            if(password != confirmPw)
+            {
+                errorMsg.Text = "Password doesn't match";
+                return;
+            }
+
+            if(gender != "Male" && gender != "Female")
+            {
+                errorMsg.Text = "Gender must selected";
+                return;
+            }
+
+            if (!DateTime.TryParse(dobBox.Text, out dob))
+            {
+                errorMsg.Text = "Date of Birth tidak valid.";
+                return;
+            }
+            if (dob >= new DateTime(2010, 1, 1))
+            {
+                errorMsg.Text = "Date of Birth must be earlier than 01/01/2010";
+                return;
+            }
+
+            AuthHandler.RegisterUser(username, password, email, dob, gender);
+            Response.Redirect("Login.aspx");
         }
     }
 }

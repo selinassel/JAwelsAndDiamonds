@@ -11,97 +11,124 @@ namespace JAwelsAndDiamonds.View
 {
 
 
-    public partial class Register
+    public partial class AddJewel
     {
 
         /// <summary>
-        /// form1 control.
+        /// jewelNameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label jewelNameLbl;
 
         /// <summary>
-        /// emailBox control.
+        /// jewelNameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailBox;
+        protected global::System.Web.UI.WebControls.TextBox jewelNameTxt;
 
         /// <summary>
-        /// usernameBox control.
+        /// jewelCategoryLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameBox;
+        protected global::System.Web.UI.WebControls.Label jewelCategoryLbl;
 
         /// <summary>
-        /// passwordBox control.
+        /// JewelCategoryDdl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordBox;
+        protected global::System.Web.UI.WebControls.DropDownList JewelCategoryDdl;
 
         /// <summary>
-        /// confirmPwBox control.
+        /// jewelBrandLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confirmPwBox;
+        protected global::System.Web.UI.WebControls.Label jewelBrandLbl;
 
         /// <summary>
-        /// genderMale control.
+        /// JewelBrandDdl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton genderMale;
+        protected global::System.Web.UI.WebControls.DropDownList JewelBrandDdl;
 
         /// <summary>
-        /// genderFemale control.
+        /// jewelPriceLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton genderFemale;
+        protected global::System.Web.UI.WebControls.Label jewelPriceLbl;
 
         /// <summary>
-        /// dobBox control.
+        /// jewelPriceTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dobBox;
+        protected global::System.Web.UI.WebControls.TextBox jewelPriceTxt;
 
         /// <summary>
-        /// errorMsg control.
+        /// jewelReleaseLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorMsg;
+        protected global::System.Web.UI.WebControls.Label jewelReleaseLbl;
 
         /// <summary>
-        /// registButton control.
+        /// jewelReleaseTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registButton;
+        protected global::System.Web.UI.WebControls.TextBox jewelReleaseTxt;
+
+        /// <summary>
+        /// errorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLbl;
+
+        /// <summary>
+        /// cancelBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelBtn;
+
+        /// <summary>
+        /// addBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addBtn;
     }
 }

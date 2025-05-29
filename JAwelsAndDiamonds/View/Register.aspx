@@ -81,11 +81,11 @@
         <p></p>
         <div>
             <asp:Label Text="Date of Birth: " runat="server" />
-            <asp:TextBox ID="dob" TextMode="Date" runat="server"></asp:TextBox>
+            <asp:TextBox ID="dobBox" TextMode="Date" runat="server"></asp:TextBox>
         </div>
         <p></p>
         <div>
-            <asp:Label ID="errorMsg" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+            <asp:Label ID="errorMsg" runat="server" ForeColor="Red"></asp:Label>
         </div>
         <p></p>
         <div>
