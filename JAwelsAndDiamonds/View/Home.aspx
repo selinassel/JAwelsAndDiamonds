@@ -1,0 +1,33 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Navbar.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="JAwelsAndDiamonds.View.Home" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div id="Heading" style="text-align: center">
+    <h1>Welcome to JAwels And Diamonds</h1>
+    <p>Enjoy your shopping experience here!</p>
+</div>
+<div>
+    <h1>Jewels List</h1>
+
+    <asp:GridView ID="GridViewJewelList" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="JewelID" HeaderText="Jewels ID" />
+            <asp:BoundField DataField="JewelName" HeaderText="Jewels Name" />
+            <asp:BoundField DataField="JewelPrice" HeaderText="Jewels Price" />
+
+            <asp:TemplateField HeaderText="Detail">
+                <ItemTemplate>
+                    <asp:Button
+                        ID="DetailBtn"
+                        runat="server"
+                        Text="Detail"
+                        CssClass="btn btn-primary"
+                        OnClientClick='<%# "location.href=\"ShowDetails.aspx?id=" + Eval("JewelID") + "\"; return false;" %>' />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+
+</div>
+</asp:Content>
