@@ -27,5 +27,21 @@ namespace JAwelsAndDiamonds.Repository
             db.MsUsers.Add(user);
             db.SaveChanges();
         }
+
+
+        public static bool UpdatePassword(int userId, string newPassword)
+        {
+            MsUser user = db.MsUsers.Find(userId);
+            if (user == null) return false;
+
+            user.UserPassword = newPassword;
+            db.SaveChanges();
+            return true;
+        }
+        public static MsUser GetUserById(int userId)
+        {
+            return db.MsUsers.Find(userId);
+        }
+
     }
 }

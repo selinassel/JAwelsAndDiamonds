@@ -42,6 +42,27 @@ namespace JAwelsAndDiamonds.Repository
                 .ToList();
         }
 
+        public List<TransactionHeader> GetAllOrders()
+        {
+            using (var db = new Database1Entities1())
+            {
+                return db.TransactionHeaders.ToList();
+            }
+        }
+
+        public List<TransactionDetail> ViewTransactionDetail()
+        {
+            return db.TransactionDetails
+                .Select(j => new TransactionDetail
+                {
+                    TransactionID = j.TransactionID,
+                    JewelName = j.MsJewel.JewelName,
+                    Quantity = j.Quantity
+                })
+                .ToList();
+        }
+
+
         //public void UpdateTransactionStatus(int transactionId, string newStatus)
         //{
         //    var transaction = db.TransactionHeaders.FirstOrDefault(t => t.TransactionID == transactionId);
@@ -51,6 +72,7 @@ namespace JAwelsAndDiamonds.Repository
         //        db.SaveChanges();
         //    }
         //}
+
 
     }
 }

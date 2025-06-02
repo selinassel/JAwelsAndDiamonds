@@ -1,14 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Navbar.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="JAwelsAndDiamonds.View.Profile" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>User Profile</h2>
 
-    <asp:Label ID="lblUsername" runat="server" Font-Bold="true" Text="Username: "></asp:Label>
-    <asp:Label ID="lblEmail" runat="server" Font-Bold="true" Text="Email: "></asp:Label>
-    <asp:Label ID="lblDOB" runat="server" Font-Bold="true" Text="Date of Birth: "></asp:Label>
-    <asp:Label ID="lblGender" runat="server" Font-Bold="true" Text="Gender: "></asp:Label>
+    <div>
+        <asp:Label ID="lblUsername" runat="server" Font-Bold="true" Text="Username: "></asp:Label>
+        <asp:Label ID="lblUsernameValue" runat="server"></asp:Label>
+    </div>
+    <div>
+        <asp:Label ID="lblEmail" runat="server" Font-Bold="true" Text="Email: "></asp:Label>
+        <asp:Label ID="lblEmailValue" runat="server"></asp:Label>
+    </div>
+    <div>
+        <asp:Label ID="lblDOB" runat="server" Font-Bold="true" Text="Date of Birth: "></asp:Label>
+        <asp:Label ID="lblDOBValue" runat="server"></asp:Label>
+    </div>
+    <div>
+        <asp:Label ID="lblGender" runat="server" Font-Bold="true" Text="Gender: "></asp:Label>
+        <asp:Label ID="lblGenderValue" runat="server"></asp:Label>
+    </div>
 
     <h3>Change Password</h3>
     <asp:Label ID="lblMessage" runat="server" CssClass="error-msg"></asp:Label>
@@ -28,5 +41,5 @@
         <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
     </div>
 
-    <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" OnClick="btnChangePassword_Click"/>
+    <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
 </asp:Content>

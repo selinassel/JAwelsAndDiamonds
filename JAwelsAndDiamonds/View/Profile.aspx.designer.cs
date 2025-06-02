@@ -24,6 +24,15 @@ namespace JAwelsAndDiamonds.View
         protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
+        /// lblUsernameValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsernameValue;
+
+        /// <summary>
         /// lblEmail control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace JAwelsAndDiamonds.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
+
+        /// <summary>
+        /// lblEmailValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailValue;
 
         /// <summary>
         /// lblDOB control.
@@ -42,6 +60,15 @@ namespace JAwelsAndDiamonds.View
         protected global::System.Web.UI.WebControls.Label lblDOB;
 
         /// <summary>
+        /// lblDOBValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDOBValue;
+
+        /// <summary>
         /// lblGender control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace JAwelsAndDiamonds.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblGender;
+
+        /// <summary>
+        /// lblGenderValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGenderValue;
 
         /// <summary>
         /// lblMessage control.

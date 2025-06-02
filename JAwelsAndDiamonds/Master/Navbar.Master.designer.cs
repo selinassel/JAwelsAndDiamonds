@@ -33,13 +33,22 @@ namespace JAwelsAndDiamonds.Master
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// logoutLB1 control.
+        /// guestPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logoutLB1;
+        protected global::System.Web.UI.WebControls.Panel guestPanel;
+
+        /// <summary>
+        /// customerPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel customerPanel;
 
         /// <summary>
         /// logoutLB2 control.
@@ -49,6 +58,24 @@ namespace JAwelsAndDiamonds.Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton logoutLB2;
+
+        /// <summary>
+        /// adminPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel adminPanel;
+
+        /// <summary>
+        /// logoutLB1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton logoutLB1;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

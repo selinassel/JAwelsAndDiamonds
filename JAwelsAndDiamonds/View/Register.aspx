@@ -89,7 +89,7 @@
         </div>
         <p></p>
         <div>
-            <asp:Button ID="registButton" runat="server" Text="Register" OnClick="registButton_Click"/>
+            <asp:Button ID="registButton" runat="server" Text="Register" OnClick="RegistButton_Click"/>
         </div>
     </form>
 </body>

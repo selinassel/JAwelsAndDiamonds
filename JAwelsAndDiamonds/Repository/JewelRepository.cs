@@ -8,7 +8,7 @@ namespace JAwelsAndDiamonds.Repository
     public class JewelRepository
     {
         static Database1Entities1 db = new Database1Entities1();
-        JewelFactory jf = new JewelFactory();
+        //JewelFactory jf = new JewelFactory();
 
         public JewelRepository() { }
 
@@ -68,6 +68,37 @@ namespace JAwelsAndDiamonds.Repository
                     JewelReleaseYear = j.JewelReleaseYear
                 })
                 .ToList();
+        }
+
+        public bool updateJewel(int jewelId, int brandId, int categoryId, string name, int price, int releaseYear)
+        {
+            var jewel = db.MsJewels.FirstOrDefault(j => j.JewelID == jewelId);
+            if (jewel == null)
+            {
+                return false;
+            }
+
+            jewel.JewelName = name;
+            jewel.CategoryID = categoryId;
+            jewel.BrandID = brandId;
+            jewel.JewelPrice = price;
+            jewel.JewelReleaseYear = releaseYear;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteJewel(int jewelId)
+        {
+            var jewel = db.MsJewels.FirstOrDefault(j => j.JewelID == jewelId);
+            if (jewel == null)
+            {
+                return false;
+            }
+
+            db.MsJewels.Remove(jewel);
+            db.SaveChanges();
+            return true;
         }
 
 

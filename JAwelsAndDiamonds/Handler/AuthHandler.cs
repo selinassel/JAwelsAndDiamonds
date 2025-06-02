@@ -14,5 +14,10 @@ namespace JAwelsAndDiamonds.Handler
         {
             UserRepository.insertUser(username, password, email, dob, gender);
         }
+        public static bool ChangePassword(int userId, string newPassword)
+        {
+            return UserRepository.UpdatePassword(userId, newPassword);
+        }
+
     }
 }

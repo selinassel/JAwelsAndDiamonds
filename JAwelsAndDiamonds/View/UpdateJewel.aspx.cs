@@ -1,4 +1,5 @@
-﻿using JAwelsAndDiamonds.Repository;
+﻿using JAwelsAndDiamonds.Controller;
+using JAwelsAndDiamonds.Repository;
 using System;
 using System.Web.UI.WebControls;
 
@@ -8,6 +9,8 @@ namespace JAwelsAndDiamonds.View
     {
         JewelRepository jr = new JewelRepository();
         private int JewelID;
+        UpdateJewelController UpdateJewelController = new UpdateJewelController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Role"] == null || Session["Role"].ToString() != "Admin")
@@ -26,7 +29,7 @@ namespace JAwelsAndDiamonds.View
             {
                 LoadCategories();
                 LoadBrands();
-                LoadJewelData();
+                LoadJewelData(JewelID);
             }
         }
 
@@ -48,26 +51,23 @@ namespace JAwelsAndDiamonds.View
             JewelBrandDdl.Items.Insert(0, new ListItem("Select Brand", ""));
         }
 
-        private void LoadJewelData()
+        private void LoadJewelData(int JewelID)
         {
-            var jewelList = jr.ViewUpdateJewel();
+            var jewelList = jr.GetJewelDetails(JewelID);
             if (jewelList == null)
             {
                 Response.Redirect("Home.aspx");
                 return;
             }
 
-            for (int i = 0; i < jewelList.Count; i++)
-            {
-                var jewel = jewelList[i];
+            var jewel = jewelList[0];
 
-                jewelNameTxt.Text = jewel.JewelName;
-                JewelCategoryDdl.SelectedValue = jewel.CategoryID.ToString();
-                JewelBrandDdl.SelectedValue = jewel.BrandID.ToString();
-                jewelPriceTxt.Text = jewel.JewelPrice.ToString();
-                jewelReleaseTxt.Text = jewel.JewelReleaseYear.ToString();
+            jewelNameTxt.Text = jewel.JewelName;
+            JewelCategoryDdl.SelectedValue = jewel.CategoryID.ToString();
+            JewelBrandDdl.SelectedValue = jewel.BrandID.ToString();
+            jewelPriceTxt.Text = jewel.JewelPrice.ToString();
+            jewelReleaseTxt.Text = jewel.JewelReleaseYear.ToString();
 
-            }
         }
 
         protected void cancelBtn_Click(object sender, EventArgs e)
@@ -83,52 +83,18 @@ namespace JAwelsAndDiamonds.View
             string priceTxt = jewelPriceTxt.Text.Trim();
             string release = jewelReleaseTxt.Text.Trim();
 
-            if (name.Length < 3 || name.Length > 25)
+            string errorMsg;
+            bool isSuccess = UpdateJewelController.UpdateJewel(JewelID, name, categoryID, brandID, priceTxt, release, out errorMsg);
+
+            if (!isSuccess)
             {
-                errorLbl.Text = "Jewel name must be between 3-25 characters.";
-                return;
+                errorLbl.Text = errorMsg;
+            }
+            else
+            {
+                Response.Redirect("Home.aspx");
             }
 
-            if (string.IsNullOrEmpty(categoryID))
-            {
-                errorLbl.Text = "Please select a category";
-                return;
-            }
-
-            if (string.IsNullOrEmpty(brandID))
-            {
-                errorLbl.Text = "Please select a brand";
-                return;
-            }
-
-            if (!int.TryParse(priceTxt, out int price) || price <= 25)
-            {
-                errorLbl.Text = "Price must be a number and more than $25";
-                return;
-            }
-
-            if (!int.TryParse(release, out int releaseYear))
-            {
-                errorLbl.Text = "Release year must be a valid number";
-                return;
-            }
-
-            if (releaseYear >= DateTime.Now.Year)
-            {
-                errorLbl.Text = "Release year must be less than current year";
-                return;
-            }
-
-            //bool result = jr.UpdateJewel(JewelID, name, Convert.ToInt32(categoryID), Convert.ToInt32(brandID), price, releaseYear);
-
-            //if (result)
-            //{
-            //    Response.Redirect("Home.aspx");
-            //}
-            //else
-            //{
-            //    errorLbl.Text = "Failed to update jewel, please try again";
-            //}
         }
     }
 }

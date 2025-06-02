@@ -1,5 +1,6 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using JAwelsAndDiamonds.Controller;
+using JAwelsAndDiamonds.Model;
+using System;
 
 namespace JAwelsAndDiamonds.View
 {
@@ -14,11 +15,29 @@ namespace JAwelsAndDiamonds.View
                 //    Response.Redirect("Login.aspx");
                 //    return;
                 //}
-
+                BindData();
 
 
             }
         }
+
+        protected void BindData()
+        {
+            MsUser user = Session["user"] as MsUser;
+            if (user != null)
+            {
+                lblUsernameValue.Text = user.UserName;
+                lblEmailValue.Text = user.UserEmail;
+                lblDOBValue.Text = user.UserDOB.ToShortDateString();
+                lblGenderValue.Text = user.UserGender;
+                //Session["Password"] = user.UserPassword; // Untuk validasi password lama
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
+
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
@@ -26,39 +45,21 @@ namespace JAwelsAndDiamonds.View
             string newPass = txtNewPassword.Text.Trim();
             string confirmPass = txtConfirmPassword.Text.Trim();
 
-            string currentPass = Session["Password"].ToString();
+            MsUser sessionUser = Session["user"] as MsUser;
+            PasswordController controller = new PasswordController();
 
-            if (oldPassInput != currentPass)
+            string cssClass;
+            string message = controller.ChangePassword(sessionUser, oldPassInput, newPass, confirmPass, out cssClass);
+
+            lblMessage.CssClass = cssClass;
+            lblMessage.Text = message;
+
+            if (cssClass == "success-msg")
             {
-                lblMessage.Text = "Old password is incorrect.";
-                return;
+                txtOldPassword.Text = "";
+                txtNewPassword.Text = "";
+                txtConfirmPassword.Text = "";
             }
-
-            if (newPass.Length < 8 || newPass.Length > 25)
-            {
-                lblMessage.Text = "New password must be between 8 and 25 characters.";
-                return;
-            }
-            if (!Regex.IsMatch(newPass, "^[a-zA-Z0-9]+$"))
-            {
-                lblMessage.Text = "New password must be alphanumeric.";
-                return;
-            }
-
-            if (newPass != confirmPass)
-            {
-                lblMessage.Text = "Confirm password must match the new password.";
-                return;
-            }
-
-            Session["Password"] = newPass;
-
-            lblMessage.CssClass = "success-msg";
-            lblMessage.Text = "Password changed successfully.";
-
-            txtOldPassword.Text = "";
-            txtNewPassword.Text = "";
-            txtConfirmPassword.Text = "";
         }
     }
 }

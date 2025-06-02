@@ -60,6 +60,7 @@
             else if (Session["Role"] != null && Session["Role"].ToString() == "Admin")
             { %>
             <asp:Button ID="btnEdit" runat="server" Text="Edit Jewel" OnClick="btnEdit_Click"/>
+        <asp:Button ID="btnDelete" runat="server" Text="Delete Jewel" OnClick="btnDelete_Click"/>
         <% } %>
     </div>
 </asp:Content>

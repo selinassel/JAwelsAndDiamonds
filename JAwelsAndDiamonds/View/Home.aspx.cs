@@ -9,9 +9,9 @@ namespace JAwelsAndDiamonds.View
         JewelHandler jh = new JewelHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["user"] == null)
+            //if (Session["user"] != null)
             //{
-            //    Response.Redirect("Login.aspx");
+            //    Response.Redirect("Home.aspx");
             //}
 
             if (!IsPostBack)

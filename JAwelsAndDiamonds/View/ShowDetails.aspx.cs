@@ -1,4 +1,5 @@
 ﻿using JAwelsAndDiamonds.Handler;
+using JAwelsAndDiamonds.Model;
 using JAwelsAndDiamonds.Repository;
 using System;
 
@@ -6,8 +7,8 @@ namespace JAwelsAndDiamonds.View
 {
     public partial class ShowDetails : System.Web.UI.Page
     {
-        JewelRepository jr = new JewelRepository();
         JewelHandler jh = new JewelHandler();
+        CartRepository cr = new CartRepository();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["user"] == null && Request.Cookies["user_cookie"] == null)
@@ -43,12 +44,35 @@ namespace JAwelsAndDiamonds.View
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
+            MsUser user = Session["user"] as MsUser;
+            int jewelID = int.Parse(Request.QueryString["id"]);
+            int userID = user.UserID; // Assuming UserID is stored in session
+            int quantity = 1;
+
+            cr.AddToCart(userID, jewelID, quantity);
+
+            Response.Redirect("Cart.aspx");
 
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             Response.Redirect("UpdateJewel.aspx?id=" + Request.QueryString["id"]);
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            bool result = jh.DeleteJewel(int.Parse(Request.QueryString["id"]));
+
+            if (result)
+            {
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                //LblErrorMessage.Text = "Error deleting jewel.";
+            }
+
         }
     }
 }

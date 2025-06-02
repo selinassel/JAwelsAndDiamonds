@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="UserID" />
       <PropertyRef Name="JewelID" />
-      <PropertyRef Name="Quantity" />
     </Key>
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="JewelID" Type="int" Nullable="false" />
@@ -156,18 +153,12 @@ warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSAND
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsBrand" EntityType="Self.MsBrand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsCategory" EntityType="Self.MsCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsJewel" EntityType="Self.MsJewel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsUser" EntityType="Self.MsUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cart" EntityType="Self.Cart" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Cart].[UserID] AS [UserID], 
-    [Cart].[JewelID] AS [JewelID], 
-    [Cart].[Quantity] AS [Quantity]
-    FROM [dbo].[Cart] AS [Cart]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [TransactionDetail].[TransactionID] AS [TransactionID], 

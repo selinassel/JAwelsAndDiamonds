@@ -8,38 +8,40 @@
  </div>
 
  <div>
-     <asp:GridView ID="GridViewOrder" runat="server" AutoGenerateColumns="False">
-         <Columns>
-             <asp:BoundField DataField="TransactionID" HeaderText="Transaction Id" />
-             <asp:BoundField DataField="UserID" HeaderText="User Id" />
-             <asp:BoundField DataField="TransactionStatus" HeaderText="Status" />
-             <asp:TemplateField HeaderText="Actions">
-                 <ItemTemplate>
-                     <asp:LinkButton
-                         ID="btnConfirmPayment"
-                         runat="server"
-                         Text="Confirm Payment"
-                         CommandName="ConfirmPayment"
-                         CommandArgument='<%# Eval("TransactionID") %>'
-                         Visible='<%# Eval("TransactionStatus").ToString() == "Payment Pending" %>' />
+        <asp:GridView ID="GridViewOrder" runat="server" AutoGenerateColumns="False" OnRowCommand="GridViewOrder_RowCommand" CssClass="table table-bordered">
+            <Columns>
+                <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" />
+                <asp:BoundField DataField="UserID" HeaderText="User ID" />
+                <asp:BoundField DataField="TransactionStatus" HeaderText="Status" />
 
-                     <asp:LinkButton
-                         ID="btnShipPackage"
-                         runat="server"
-                         Text="Ship Package"
-                         CommandName="ShipPackage"
-                         CommandArgument='<%# Eval("TransactionID") %>'
-                         Visible='<%# Eval("TransactionStatus").ToString() == "Shipment Pending" %>' />
+                <asp:TemplateField HeaderText="Actions">
+                    <ItemTemplate>
+                        <asp:LinkButton
+                            ID="btnConfirmPayment"
+                            runat="server"
+                            Text="Confirm Payment"
+                            CssClass="action-btn btn btn-success"
+                            CommandName="ConfirmPayment"
+                            CommandArgument='<%# Eval("TransactionID") %>'
+                            Visible='<%# Eval("TransactionStatus").ToString() == "Payment Pending" %>' />
 
-                     <asp:Label
-                         ID="lblWaiting"
-                         runat="server"
-                         Text="Waiting user confirmation..."
-                         Visible='<%# Eval("TransactionStatus").ToString() == "Arrived" %>' />
-                 </ItemTemplate>
-             </asp:TemplateField>
+                        <asp:LinkButton
+                            ID="btnShipPackage"
+                            runat="server"
+                            Text="Ship Package"
+                            CssClass="action-btn btn btn-primary"
+                            CommandName="ShipPackage"
+                            CommandArgument='<%# Eval("TransactionID") %>'
+                            Visible='<%# Eval("TransactionStatus").ToString() == "Shipment Pending" %>' />
 
-         </Columns>
-     </asp:GridView>
- </div>
+                        <asp:Label
+                            ID="lblWaiting"
+                            runat="server"
+                            Text="Waiting for user confirmation..."
+                            Visible='<%# Eval("TransactionStatus").ToString() == "Arrived" %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 </asp:Content>

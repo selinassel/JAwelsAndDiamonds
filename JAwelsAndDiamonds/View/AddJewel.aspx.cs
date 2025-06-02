@@ -1,4 +1,5 @@
-﻿using JAwelsAndDiamonds.Repository;
+﻿using JAwelsAndDiamonds.Controller;
+using JAwelsAndDiamonds.Repository;
 using System;
 using System.Web.UI.WebControls;
 
@@ -6,6 +7,7 @@ namespace JAwelsAndDiamonds.View
 {
     public partial class AddJewel : System.Web.UI.Page
     {
+        AddJewelController addController = new AddJewelController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Role"] == null || Session["Role"].ToString() != "Admin")
@@ -49,59 +51,18 @@ namespace JAwelsAndDiamonds.View
             string name = jewelNameTxt.Text.Trim();
             string priceTxt = jewelPriceTxt.Text.Trim();
             string release = jewelReleaseTxt.Text.Trim();
-            int releaseYear = int.Parse(release);
+            string categoryVal = JewelCategoryDdl.SelectedValue;
+            string brandVal = JewelBrandDdl.SelectedValue;
 
-            if (name.Length < 3 || name.Length > 25)
+            string error = addController.AddJewel(name, priceTxt, release, categoryVal, brandVal);
+
+            if (error != null)
             {
-                errorLbl.Text = "Jewel name length must be between 3-25 characters";
+                errorLbl.Text = error;
                 return;
             }
-
-            if (string.IsNullOrEmpty(JewelCategoryDdl.SelectedValue) ||
-                !int.TryParse(JewelCategoryDdl.SelectedValue, out int categoryID))
-            {
-                errorLbl.Text = "Please select a valid category";
-                return;
-            }
-
-            if (string.IsNullOrEmpty(JewelBrandDdl.SelectedValue) ||
-                !int.TryParse(JewelBrandDdl.SelectedValue, out int brandID))
-            {
-                errorLbl.Text = "Please select a valid brand";
-                return;
-            }
-
-            if (!int.TryParse(priceTxt.Replace("$", "").Trim(), out int price))
-            {
-                errorLbl.Text = "Price must be a valid number";
-                return;
-            }
-
-            if (price < 25)
-            {
-                errorLbl.Text = "Price must be at least $25";
-                return;
-            }
-
-            //if (!DateTime.TryParse(release, out DateTime releaseDate))
-            //{
-            //    errorLbl.Text = "Release date must be a valid date";
-            //    return;
-            //}
-
-            if (releaseYear > DateTime.Now.Year)
-            {
-                errorLbl.Text = "Release date cannot be in the future";
-                return;
-            }
-
-            //int releaseYear = releaseDate.Year;
-
-            JewelRepository.insertJewel(categoryID, brandID, name, price, releaseYear);
 
             Response.Redirect("Home.aspx");
-
-            //errorLbl.Text = "Failed to add jewel. Please try again."
         }
     }
 }
