@@ -16,7 +16,7 @@ namespace JAwelsAndDiamonds.Model
     {
         public int TransactionID { get; set; }
         public Nullable<int> JewelID { get; set; }
-        public string Quantity { get; set; }
+        public Nullable<int> Quantity { get; set; }
     
         public virtual MsJewel MsJewel { get; set; }
         public virtual TransactionHeader TransactionHeader { get; set; }

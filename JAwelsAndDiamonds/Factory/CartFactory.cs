@@ -4,12 +4,11 @@ namespace JAwelsAndDiamonds.Factory
 {
     public class CartFactory
     {
-        public Cart createNewCart(int jewelID, int userID, int quantity)
+        public Cart createNewCart(int userID, int jewelID, int quantity)
         {
-            MsJewel jewel = new MsJewel();
             Cart cart = new Cart();
-            cart.JewelID = jewelID;
             cart.UserID = userID;
+            cart.JewelID = jewelID;
             cart.Quantity = quantity;
             return cart;
         }

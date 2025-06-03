@@ -46,7 +46,7 @@ namespace JAwelsAndDiamonds.View
         {
             MsUser user = Session["user"] as MsUser;
             int jewelID = int.Parse(Request.QueryString["id"]);
-            int userID = user.UserID; // Assuming UserID is stored in session
+            int userID = user.UserID;
             int quantity = 1;
 
             cr.AddToCart(userID, jewelID, quantity);

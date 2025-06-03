@@ -1,4 +1,5 @@
 ﻿
+using JAwelsAndDiamonds.Model;
 using JAwelsAndDiamonds.Repository;
 using System;
 using System.Linq;
@@ -24,14 +25,35 @@ namespace JAwelsAndDiamonds.View
         }
         private void LoadCart()
         {
-            int userId = Convert.ToInt32(Session["UserID"]);
+            //int userId = Convert.ToInt32(Session["UserID"]);
+            //int userId = Convert.ToInt32(Session[user] ?? -1);
+
+            MsUser user = Session["user"] as MsUser;
+            int userId = user.UserID;
+
+            if (userId == -1)
+            {
+                ErrorLabel.Text = "User belum login.";
+                return;
+            }
+
             var cartItems = CartRepository.GetCartByUserId(userId);
+
+
 
             CartGridView.DataSource = cartItems;
             CartGridView.DataBind();
 
-            int total = cartItems.Sum(item => item.MsJewel.JewelPrice * item.Quantity);
+            int total = cartItems.Sum(item => item.Subtotal);
             TotalLabel.Text = $"Total: ${total}";
+
+            var cartItem = CartRepository.GetCartByUserId(userId);
+
+            if (cartItem.Count == 0)
+            {
+                ErrorLabel.Text = "Cart kosong atau tidak ditemukan.";
+            }
+
         }
 
         private void LoadPaymentMethods()
@@ -77,11 +99,11 @@ namespace JAwelsAndDiamonds.View
             LoadCart();
         }
 
-        protected void ClearCartButton_Click(object sender, EventArgs e)
+        public void ClearCartButton_Click(object sender, EventArgs e)
         {
-            int userId = Convert.ToInt32(Session["UserID"]);
-            CartRepository.ClearCartByUserId(userId);
-            LoadCart();
+            //int userId = Convert.ToInt32(Session["UserID"]);
+            //CartRepository.ClearCartByUserId(userId);
+            //LoadCart();
         }
 
         protected void CheckoutButton_Click(object sender, EventArgs e)

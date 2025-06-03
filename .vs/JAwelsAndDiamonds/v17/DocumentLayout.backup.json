@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\jawelsanddiamonds\\view\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|solutionrelative:jawelsanddiamonds\\view\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\jawelsanddiamonds\\view\\showdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|solutionrelative:jawelsanddiamonds\\view\\showdetails.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|d:\\kuliah\\sems4\\psdlab\\jawelsanddiamonds\\jawelsanddiamonds\\controller\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|solutionrelative:jawelsanddiamonds\\controller\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\jawelsanddiamonds\\view\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|solutionrelative:jawelsanddiamonds\\view\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E1842773-F314-4AE4-84CE-A7B225C10440}|JAwelsAndDiamonds\\JAwelsAndDiamonds.csproj|d:\\kuliah\\sems4\\psdlab\\jawelsanddiamonds\\jawelsanddiamonds\\view\\addjewel.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -111,19 +111,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TransactionController.cs",
-              "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\TransactionController.cs",
-              "RelativeDocumentMoniker": "JAwelsAndDiamonds\\Controller\\TransactionController.cs",
-              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\TransactionController.cs",
-              "RelativeToolTip": "JAwelsAndDiamonds\\Controller\\TransactionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T11:26:31.253Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -153,12 +140,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddJewelController.cs",
               "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\AddJewelController.cs",
               "RelativeDocumentMoniker": "JAwelsAndDiamonds\\Controller\\AddJewelController.cs",
-              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\AddJewelController.cs*",
-              "RelativeToolTip": "JAwelsAndDiamonds\\Controller\\AddJewelController.cs*",
+              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\AddJewelController.cs",
+              "RelativeToolTip": "JAwelsAndDiamonds\\Controller\\AddJewelController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-02T11:22:34.183Z",
@@ -166,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ShowDetails.aspx.cs",
               "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\View\\ShowDetails.aspx.cs",
               "RelativeDocumentMoniker": "JAwelsAndDiamonds\\View\\ShowDetails.aspx.cs",
@@ -192,6 +179,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.aspx",
+              "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\View\\Home.aspx",
+              "RelativeDocumentMoniker": "JAwelsAndDiamonds\\View\\Home.aspx",
+              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\View\\Home.aspx",
+              "RelativeToolTip": "JAwelsAndDiamonds\\View\\Home.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-06-02T05:55:54.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\TransactionController.cs",
+              "RelativeDocumentMoniker": "JAwelsAndDiamonds\\Controller\\TransactionController.cs",
+              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Controller\\TransactionController.cs",
+              "RelativeToolTip": "JAwelsAndDiamonds\\Controller\\TransactionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T11:26:31.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
               "Title": "AuthHandler.cs",
               "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\Handler\\AuthHandler.cs",
@@ -201,19 +214,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-02T06:19:37.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Home.aspx",
-              "DocumentMoniker": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\View\\Home.aspx",
-              "RelativeDocumentMoniker": "JAwelsAndDiamonds\\View\\Home.aspx",
-              "ToolTip": "D:\\Kuliah\\Sems4\\PSDLAB\\JAwelsAndDiamonds\\JAwelsAndDiamonds\\View\\Home.aspx",
-              "RelativeToolTip": "JAwelsAndDiamonds\\View\\Home.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-06-02T05:55:54.197Z",
               "EditorCaption": ""
             },
             {

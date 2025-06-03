@@ -1,4 +1,5 @@
 ﻿
+using JAwelsAndDiamonds.Factory;
 using JAwelsAndDiamonds.Model;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,38 @@ namespace JAwelsAndDiamonds.Repository
     public class CartRepository
     {
         Database1Entities1 db = new Database1Entities1();
-        public static List<Cart> GetCartByUserId(int userId)
+        public static List<CartItemViewModel> GetCartByUserId(int userId)
         {
             using (var db = new Database1Entities1())
             {
-                return db.Carts.Include("MsJewel.MsBrand").Include("MsUser").Where(c => c.UserID == userId).ToList();
+                return db.Carts
+                    .Include("MsJewel.MsBrand")
+                    .Include("MsUser")
+                    .Where(c => c.UserID == userId)
+                    .Select(c => new CartItemViewModel
+                    {
+                        JewelID = c.JewelID,
+                        JewelName = c.MsJewel.JewelName,
+                        Price = c.MsJewel.JewelPrice,
+                        Brand = c.MsJewel.MsBrand.BrandName,
+                        Quantity = c.Quantity,
+                        Subtotal = (c.MsJewel.JewelPrice) * (c.Quantity)
+                    })
+                    .ToList();
             }
         }
+
+
+        public class CartItemViewModel
+        {
+            public int JewelID { get; set; }
+            public string JewelName { get; set; }
+            public int Price { get; set; }
+            public string Brand { get; set; }
+            public int Quantity { get; set; }
+            public int Subtotal { get; set; }
+        }
+
 
         public static void UpdateCartItemQuantity(int userId, int jewelId, int quantity)
         {
@@ -55,6 +81,10 @@ namespace JAwelsAndDiamonds.Repository
                     TransactionDate = DateTime.Now,
                     PaymentMethod = paymentMethod
                 };
+
+                TransactionFactory factory = new TransactionFactory();
+                factory.createNewTransaction(userId, DateTime.Now, paymentMethod, "Payment Pending");
+
                 db.TransactionHeaders.Add(header);
                 db.SaveChanges();
 
@@ -64,10 +94,12 @@ namespace JAwelsAndDiamonds.Repository
                     {
                         TransactionID = header.TransactionID,
                         JewelID = item.JewelID,
-                        Quantity = item.Quantity.ToString()
+                        Quantity = item.Quantity
                     };
                     db.TransactionDetails.Add(detail);
                 }
+
+
 
                 db.Carts.RemoveRange(cartItems);
                 db.SaveChanges();
@@ -75,7 +107,7 @@ namespace JAwelsAndDiamonds.Repository
         }
 
 
-        public static void ClearCartByUserId(int userId)
+        public void ClearCartByUserId(int userId)
         {
             using (var db = new Database1Entities1())
             {
@@ -84,6 +116,17 @@ namespace JAwelsAndDiamonds.Repository
                 db.Carts.RemoveRange(cartItems);
                 db.SaveChanges();
             }
+        }
+
+
+
+        public void AddToCart(int UserID, int JewelID, int Quantity)
+        {
+            CartFactory factory = new CartFactory();
+            Cart cart = factory.createNewCart(UserID, JewelID, Quantity);
+
+            db.Carts.Add(cart);
+            db.SaveChanges();
         }
     }
 }

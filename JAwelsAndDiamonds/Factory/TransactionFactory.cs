@@ -15,5 +15,14 @@ namespace JAwelsAndDiamonds.Factory
             return transaction;
         }
 
+        public TransactionDetail createTransactionDetail(int transactionID, int jewelID, int quantity)
+        {
+            TransactionDetail transactionDetail = new TransactionDetail();
+            transactionDetail.TransactionID = transactionID;
+            transactionDetail.JewelID = jewelID;
+            transactionDetail.Quantity = quantity;
+            return transactionDetail;
+        }
+
     }
 }

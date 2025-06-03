@@ -50,18 +50,25 @@ namespace JAwelsAndDiamonds.Repository
             }
         }
 
-        public List<TransactionDetail> ViewTransactionDetail()
+        public List<TransactionDetailViewModel> ViewTransactionDetail()
         {
             return db.TransactionDetails
-                .Select(j => new TransactionDetail
+                .Select(j => new TransactionDetailViewModel
                 {
                     TransactionID = j.TransactionID,
                     JewelName = j.MsJewel.JewelName,
-                    Quantity = j.Quantity
+                    Quantity = j.Quantity ?? 0
                 })
                 .ToList();
         }
 
+
+        public class TransactionDetailViewModel
+        {
+            public int TransactionID { get; set; }
+            public string JewelName { get; set; }
+            public int Quantity { get; set; }
+        }
 
         //public void UpdateTransactionStatus(int transactionId, string newStatus)
         //{

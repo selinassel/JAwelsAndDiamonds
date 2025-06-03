@@ -30,7 +30,7 @@ namespace JAwelsAndDiamonds.Model
         public virtual DbSet<MsJewel> MsJewels { get; set; }
         public virtual DbSet<MsUser> MsUsers { get; set; }
         public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
-        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
     }
 }

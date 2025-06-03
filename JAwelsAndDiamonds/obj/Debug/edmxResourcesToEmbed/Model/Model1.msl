@@ -55,21 +55,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TransactionDetails">
-      <EntityTypeMapping TypeName="Database1Model.TransactionDetail">
-        <MappingFragment StoreEntitySet="TransactionDetail">
-          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-          <ScalarProperty Name="JewelID" ColumnName="JewelID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Carts">
       <EntityTypeMapping TypeName="Database1Model.Cart">
         <MappingFragment StoreEntitySet="Cart">
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="JewelID" ColumnName="JewelID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="Database1Model.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
