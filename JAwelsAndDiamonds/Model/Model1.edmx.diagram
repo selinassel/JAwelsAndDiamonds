@@ -16,10 +16,10 @@
         <EntityTypeShape EntityType="Database1Model.Cart" Width="1.5" PointX="5.625" PointY="4.125" />
         <AssociationConnector Association="Database1Model.FK_Cart_MsJewel" />
         <AssociationConnector Association="Database1Model.FK_Cart_MsUser" />
-        <EntityTypeShape EntityType="Database1Model.TransactionDetail" Width="1.5" PointX="0.875" PointY="0.75" />
+        <EntityTypeShape EntityType="Database1Model.TransactionDetail" Width="1.5" PointX="1" PointY="0.75" />
         <AssociationConnector Association="Database1Model.FK_TransactionDetail_MsJewel" />
         <AssociationConnector Association="Database1Model.FK_TransactionDetail_TransactionHeader" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -1,5 +1,4 @@
-﻿
-using JAwelsAndDiamonds.Factory;
+﻿using JAwelsAndDiamonds.Factory;
 using JAwelsAndDiamonds.Model;
 using System;
 using System.Collections.Generic;
@@ -79,12 +78,9 @@ namespace JAwelsAndDiamonds.Repository
                 {
                     UserID = userId,
                     TransactionDate = DateTime.Now,
-                    PaymentMethod = paymentMethod
+                    PaymentMethod = paymentMethod,
+                    TransactionStatus = "Payment Pending"
                 };
-
-                TransactionFactory factory = new TransactionFactory();
-                factory.createNewTransaction(userId, DateTime.Now, paymentMethod, "Payment Pending");
-
                 db.TransactionHeaders.Add(header);
                 db.SaveChanges();
 
@@ -99,33 +95,37 @@ namespace JAwelsAndDiamonds.Repository
                     db.TransactionDetails.Add(detail);
                 }
 
-
-
                 db.Carts.RemoveRange(cartItems);
                 db.SaveChanges();
             }
         }
 
-
-        public void ClearCartByUserId(int userId)
+        public static void ClearCartByUserId(int userId)
         {
-            using (var db = new Database1Entities1())
+            using (var context = new Database1Entities1())
             {
-                var cartItems = db.Carts.Where(c => c.UserID == userId).ToList();
-
-                db.Carts.RemoveRange(cartItems);
-                db.SaveChanges();
+                var items = context.Carts.Where(c => c.UserID == userId).ToList();
+                context.Carts.RemoveRange(items);
+                context.SaveChanges();
             }
         }
-
 
 
         public void AddToCart(int UserID, int JewelID, int Quantity)
         {
-            CartFactory factory = new CartFactory();
-            Cart cart = factory.createNewCart(UserID, JewelID, Quantity);
+            var existingCartItem = db.Carts.FirstOrDefault(c => c.UserID == UserID && c.JewelID == JewelID);
 
-            db.Carts.Add(cart);
+            if (existingCartItem != null)
+            {
+                existingCartItem.Quantity += Quantity;
+            }
+            else
+            {
+                CartFactory factory = new CartFactory();
+                Cart cart = factory.createNewCart(UserID, JewelID, Quantity);
+                db.Carts.Add(cart);
+            }
+
             db.SaveChanges();
         }
     }

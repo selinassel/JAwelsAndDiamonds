@@ -57,7 +57,7 @@
     <Property Name="PaymentMethod" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="TransactionStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MsUser" Relationship="Self.FK_TransactionHeader_MsUser" FromRole="TransactionHeader" ToRole="MsUser" />
-    <NavigationProperty Name="TransactionDetail" Relationship="Database1Model.FK_TransactionDetail_TransactionHeader" FromRole="TransactionHeader" ToRole="TransactionDetail" />
+    <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK_TransactionDetail_TransactionHeader" FromRole="TransactionHeader" ToRole="TransactionDetail" />
   </EntityType>
   <Association Name="FK_MsJewel_MsBrand">
     <End Role="MsBrand" Type="Self.MsBrand" Multiplicity="1" />
@@ -170,15 +170,16 @@
   <EntityType Name="TransactionDetail">
     <Key>
       <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="JewelID" />
     </Key>
     <Property Name="TransactionID" Type="Int32" Nullable="false" />
-    <Property Name="JewelID" Type="Int32" />
+    <Property Name="JewelID" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" />
     <NavigationProperty Name="MsJewel" Relationship="Database1Model.FK_TransactionDetail_MsJewel" FromRole="TransactionDetail" ToRole="MsJewel" />
     <NavigationProperty Name="TransactionHeader" Relationship="Database1Model.FK_TransactionDetail_TransactionHeader" FromRole="TransactionDetail" ToRole="TransactionHeader" />
   </EntityType>
   <Association Name="FK_TransactionDetail_MsJewel">
-    <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="0..1" />
+    <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="1" />
     <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MsJewel">
@@ -191,7 +192,7 @@
   </Association>
   <Association Name="FK_TransactionDetail_TransactionHeader">
     <End Type="Database1Model.TransactionHeader" Role="TransactionHeader" Multiplicity="1" />
-    <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="0..1" />
+    <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TransactionHeader">
         <PropertyRef Name="TransactionID" />

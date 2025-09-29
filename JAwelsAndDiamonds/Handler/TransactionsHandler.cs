@@ -25,5 +25,11 @@ namespace JAwelsAndDiamonds.Handler
                 }
             }
         }
+
+        public static List<TransactionHeader> GetData()
+        {
+            return TransactionRepository.GetData();
+        }
+
     }
 }

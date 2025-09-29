@@ -42,6 +42,30 @@ namespace JAwelsAndDiamonds.Repository
                 .ToList();
         }
 
+        public List<TransactionHeader> ViewMyOrder()
+        {
+            return db.TransactionHeaders
+                .Select(t => new
+                {
+                    t.TransactionID,
+                    t.UserID,
+                    t.TransactionDate,
+                    t.PaymentMethod,
+                    t.TransactionStatus
+                })
+                .AsEnumerable()
+                .Select(t => new TransactionHeader
+                {
+                    TransactionID = t.TransactionID,
+                    UserID = t.UserID,
+                    TransactionDate = t.TransactionDate,
+                    PaymentMethod = t.PaymentMethod,
+                    TransactionStatus = t.TransactionStatus
+                })
+                .ToList();
+        }
+
+
         public List<TransactionHeader> GetAllOrders()
         {
             using (var db = new Database1Entities1())
@@ -50,9 +74,10 @@ namespace JAwelsAndDiamonds.Repository
             }
         }
 
-        public List<TransactionDetailViewModel> ViewTransactionDetail()
+        public List<TransactionDetailViewModel> ViewTransactionDetail(int transactionID)
         {
             return db.TransactionDetails
+                .Where(j => j.TransactionID == transactionID)
                 .Select(j => new TransactionDetailViewModel
                 {
                     TransactionID = j.TransactionID,
@@ -80,6 +105,11 @@ namespace JAwelsAndDiamonds.Repository
         //    }
         //}
 
+        public static List<TransactionHeader> GetData()
+        {
+            Database1Entities1 db = new Database1Entities1();
 
+            return db.TransactionHeaders.ToList();
+        }
     }
 }

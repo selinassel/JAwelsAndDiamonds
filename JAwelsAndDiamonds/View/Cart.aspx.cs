@@ -1,8 +1,8 @@
-﻿
-using JAwelsAndDiamonds.Model;
+﻿using JAwelsAndDiamonds.Model;
 using JAwelsAndDiamonds.Repository;
 using System;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace JAwelsAndDiamonds.View
@@ -25,8 +25,6 @@ namespace JAwelsAndDiamonds.View
         }
         private void LoadCart()
         {
-            //int userId = Convert.ToInt32(Session["UserID"]);
-            //int userId = Convert.ToInt32(Session[user] ?? -1);
 
             MsUser user = Session["user"] as MsUser;
             int userId = user.UserID;
@@ -51,7 +49,7 @@ namespace JAwelsAndDiamonds.View
 
             if (cartItem.Count == 0)
             {
-                ErrorLabel.Text = "Cart kosong atau tidak ditemukan.";
+                ErrorLabel.Text = "Cart is empty";
             }
 
         }
@@ -69,41 +67,22 @@ namespace JAwelsAndDiamonds.View
         {
 
         }
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
-            int userId = Convert.ToInt32(Session["UserID"]);
-
-            foreach (GridViewRow row in CartGridView.Rows)
-            {
-                int jewelId = Convert.ToInt32(CartGridView.DataKeys[row.RowIndex].Value);
-                TextBox txtQuantity = (TextBox)row.FindControl("txtQuantity");
-
-                if (int.TryParse(txtQuantity.Text, out int quantity) && quantity > 0)
-                {
-                    CartRepository.UpdateCartItemQuantity(userId, jewelId, quantity);
-                }
-            }
-
-            LoadCart();
-        }
-
-        protected void btnRemove_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            GridViewRow row = (GridViewRow)btn.NamingContainer;
-            int jewelId = Convert.ToInt32(CartGridView.DataKeys[row.RowIndex].Value);
-            int userId = Convert.ToInt32(Session["UserID"]);
-
-            CartRepository.RemoveFromCart(userId, jewelId);
-            LoadCart();
-        }
-
         public void ClearCartButton_Click(object sender, EventArgs e)
         {
-            //int userId = Convert.ToInt32(Session["UserID"]);
-            //CartRepository.ClearCartByUserId(userId);
-            //LoadCart();
+            if (Session["user"] == null)
+            {
+                ErrorLabel.Text = "User belum login.";
+                return;
+            }
+
+            MsUser user = Session["user"] as MsUser;
+            int userId = user.UserID;
+
+            CartRepository.ClearCartByUserId(userId);
+            LoadCart();
+
+            ErrorLabel.Text = "Cart cleared.";
+            ErrorLabel.ForeColor = System.Drawing.Color.Green;
         }
 
         protected void CheckoutButton_Click(object sender, EventArgs e)
@@ -114,7 +93,8 @@ namespace JAwelsAndDiamonds.View
                 return;
             }
 
-            int userId = Convert.ToInt32(Session["UserID"]);
+            MsUser user = Session["user"] as MsUser;
+            int userId = user.UserID;
             string paymentMethod = PaymentDropdown.SelectedValue;
 
             try
@@ -128,9 +108,37 @@ namespace JAwelsAndDiamonds.View
             catch (Exception ex)
             {
                 ErrorLabel.ForeColor = System.Drawing.Color.Red;
-                ErrorLabel.Text = "Checkout failed. Please try again.";
+                ErrorLabel.Text = "Checkout failed";
             }
-
         }
+        protected void CartGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "UpdateItem" || e.CommandName == "RemoveItem")
+            {
+                int jewelId = Convert.ToInt32(e.CommandArgument);
+                int userId = ((MsUser)Session["user"]).UserID;
+
+                GridViewRow row = ((Control)e.CommandSource).NamingContainer as GridViewRow;
+
+                if (row == null) return;
+
+                if (e.CommandName == "UpdateItem")
+                {
+                    TextBox txtQuantity = row.FindControl("txtQuantity") as TextBox;
+
+                    if (txtQuantity != null && int.TryParse(txtQuantity.Text, out int quantity) && quantity > 0)
+                    {
+                        CartRepository.UpdateCartItemQuantity(userId, jewelId, quantity);
+                    }
+                }
+                else if (e.CommandName == "RemoveItem")
+                {
+                    CartRepository.RemoveFromCart(userId, jewelId);
+                }
+
+                LoadCart();
+            }
+        }
+
     }
 }

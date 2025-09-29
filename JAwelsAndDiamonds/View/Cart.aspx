@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Navbar.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="JAwelsAndDiamonds.View.Cart" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Navbar.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="JAwelsAndDiamonds.View.Cart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -7,7 +6,7 @@
     <div>
         <h2>Jewel's Cart</h2>
     </div>
-    <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="False" Width="100%" style="margin-bottom: 382px">
+    <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="False" Width="100%" style="margin-bottom: 382px" OnRowCommand="CartGridView_RowCommand">
         <Columns>
             <asp:BoundField DataField="JewelID" HeaderText="ID" />
             <asp:BoundField DataField="JewelName" HeaderText="Name" />

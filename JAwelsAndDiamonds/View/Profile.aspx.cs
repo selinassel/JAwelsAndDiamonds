@@ -30,7 +30,7 @@ namespace JAwelsAndDiamonds.View
                 lblEmailValue.Text = user.UserEmail;
                 lblDOBValue.Text = user.UserDOB.ToShortDateString();
                 lblGenderValue.Text = user.UserGender;
-                //Session["Password"] = user.UserPassword; // Untuk validasi password lama
+                //Session["Password"] = user.UserPassword; 
             }
             else
             {

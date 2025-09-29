@@ -22,5 +22,11 @@ namespace JAwelsAndDiamonds.Controller
         {
             handler.UpdateTransactionStatus(transactionId, "Shipment Pending", "Arrived");
         }
+
+        public void UpdateStatus(int transactionId, string currentStatus, string newStatus)
+        {
+            handler.UpdateTransactionStatus(transactionId, currentStatus, newStatus);
+        }
+
     }
 }

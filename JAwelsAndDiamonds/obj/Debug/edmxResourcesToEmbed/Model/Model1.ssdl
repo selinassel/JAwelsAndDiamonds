@@ -48,14 +48,13 @@
     <Property Name="UserGender" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSANDDIAMONDS\APP_DATA\DATABASE1.MDF.dbo.TransactionDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TransactionDetail">
     <Key>
       <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="JewelID" />
     </Key>
     <Property Name="TransactionID" Type="int" Nullable="false" />
-    <Property Name="JewelID" Type="int" />
+    <Property Name="JewelID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" />
   </EntityType>
   <EntityType Name="TransactionHeader">
@@ -117,7 +116,7 @@ warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSAND
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransactionDetail_MsJewel">
-    <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="0..1" />
+    <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="1" />
     <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MsJewel">
@@ -130,7 +129,7 @@ warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSAND
   </Association>
   <Association Name="FK_TransactionDetail_TransactionHeader">
     <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
-    <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="0..1" />
+    <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TransactionHeader">
         <PropertyRef Name="TransactionID" />
@@ -158,14 +157,8 @@ warning 6002: The table/view 'D:\KULIAH\SEMS4\PSDLAB\JAWELSANDDIAMONDS\JAWELSAND
     <EntitySet Name="MsCategory" EntityType="Self.MsCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsJewel" EntityType="Self.MsJewel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MsUser" EntityType="Self.MsUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TransactionDetail].[TransactionID] AS [TransactionID], 
-    [TransactionDetail].[JewelID] AS [JewelID], 
-    [TransactionDetail].[Quantity] AS [Quantity]
-    FROM [dbo].[TransactionDetail] AS [TransactionDetail]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_Cart_MsJewel" Association="Self.FK_Cart_MsJewel">
       <End Role="MsJewel" EntitySet="MsJewel" />
       <End Role="Cart" EntitySet="Cart" />
